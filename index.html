@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Парсер данных о фильме</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <h1>Парсер данных о фильме</h1>
+    <input id="inputId" type="text" placeholder="Введите ссылку или ID фильма">
+    <textarea id="inputText" placeholder="Вставьте текст о фильме здесь... (копируем от названия фильма, до описания)"></textarea>
+    <div>
+        <label><input type="checkbox" id="isWinBestFilm"> Лучший фильм</label>
+        <label><input type="checkbox" id="isWinOriginalScript"> Лучший сценарий</label>
+        <label><input type="checkbox" id="isWinAdaptedScreenplay"> Лучший адаптированный сценарий</label>
+        <label><input type="checkbox" id="isWinShortAnimatedFilm"> Лучший короткометражный анимационный фильм</label>
+        <label><input type="checkbox" id="isWinShortFeatureFilm"> Лучший короткометражный игровой фильм</label>
+        <label><input type="checkbox" id="isWinShortDocumentaryFilm"> Лучший короткометражный документальный фильм</label>
+        <label><input type="checkbox" id="isWinBestDocumentary"> Лучший документальный фильм</label>
+        <label><input type="checkbox" id="isWinForeignLanguageFilm"> Лучший фильм на иностранном языке</label>
+        <label><input type="checkbox" id="isWinBestAnimatedFilm"> Лучший анимационный фильм</label>
+    </div>
+    <button id="parseButton">Обработать</button>
+    <button id="copyButton">Скопировать</button>
+    <h2>Результат:</h2>
+    <pre id="output"></pre>
+</body>
+</html>
