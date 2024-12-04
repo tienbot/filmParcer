@@ -69,13 +69,20 @@ document.getElementById('parseButton').addEventListener('click', () => {
     result.genres = genres;
 
     // Режиссер, сценарий и прочие данные
-    result.director = findLineValue('Режиссер');
-    result.scenario = findLineValue('Сценарий');
-    result.producer = findLineValue('Продюсер');
-    result.operator = findLineValue('Оператор');
-    result.composer = findLineValue('Композитор');
-    result.artist = findLineValue('Художник');
-    result.installation = findLineValue('Монтаж');
+    const directorLine = findLineValue('Режиссер');
+    result.director = directorLine.split(',').map(director => director.trim());
+    const scenarioLine = findLineValue('Сценарий');
+    result.scenario = scenarioLine.split(',').map(scenario => scenario.trim());
+    const producerLine = findLineValue('Продюсер');
+    result.producer = producerLine.split(',').map(producer => producer.trim());
+    const operatorLine = findLineValue('Оператор');
+    result.operator = operatorLine.split(',').map(operator => operator.trim());
+    const composerLine = findLineValue('Композитор');
+    result.composer = composerLine.split(',').map(composer => composer.trim());
+    const artistLine = findLineValue('Художник');
+    result.artist = artistLine.split(',').map(artist => artist.trim());
+    const installationLine = findLineValue('Монтаж');
+    result.installation = installationLine.split(',').map(installation => installation.trim());
     result.worldPremiere = findLineValue('Премьера в мире').split(',')[0];
     result.video = '';
 
