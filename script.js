@@ -52,6 +52,7 @@ document.getElementById('parseButton').addEventListener('click', () => {
 
     result.filmLength = findLineValue('Время');
     result.description = lines.slice(lines.findIndex(line => line.startsWith('Гуляя'))).join(' ').trim();
+    result.video = `https://www.kinopoisk.ru/film/${inputId}/`;
     result.webUrl = `https://www.kinopoisk.ru/film/${inputId}/`;
 
     // Форматирование результата
