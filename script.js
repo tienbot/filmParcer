@@ -79,6 +79,32 @@ document.getElementById('parseButton').addEventListener('click', () => {
     const genres = findLineValue('Жанр').split(',').map(genre => ({ genre: genre.trim() }));
     result.genres = genres;
 
+    // Режиссер, сценарий и прочие данные
+    const directorLine = findLineValue('Режиссер');
+    result.director = directorLine.split(',').map(director => director.trim());
+    const scenarioLine = findLineValue('Сценарий');
+    result.scenario = scenarioLine.split(',').map(scenario => scenario.trim());
+    const producerLine = findLineValue('Продюсер');
+    result.producer = producerLine.split(',').map(producer => producer.trim());
+    const operatorLine = findLineValue('Оператор');
+    result.operator = operatorLine.split(',').map(operator => operator.trim());
+    const composerLine = findLineValue('Композитор');
+    result.composer = composerLine.split(',').map(composer => composer.trim());
+    const artistLine = findLineValue('Художник');
+    result.artist = artistLine.split(',').map(artist => artist.trim());
+    const installationLine = findLineValue('Монтаж');
+    result.installation = installationLine.split(',').map(installation => installation.trim());
+
+    result.worldPremiere = findLineValue('Премьера в мире').split(',')[0];
+
+    // Рейтинг MPAA и возрастные ограничения
+    const ratingMpaaLine = findLineValue('Рейтинг MPAA'); // ищем строку с рейтингом
+    if (ratingMpaaLine) {
+        result.ratingMpaa = ratingMpaaLine.toLowerCase(); // сохраняем рейтинг в формате строки (например, 'r')
+    } else {
+        result.ratingMpaa = '';
+    }
+    result.ageLimitLine = findLineValue('Возраст');
     result.filmLength = findLineValue('Время');
     result.description = lines.slice(lines.findIndex(line => line.startsWith('Гуляя'))).join(' ').trim();
     result.video = `https://www.kinopoisk.ru/film/${inputId}/`;
