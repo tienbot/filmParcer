@@ -43,6 +43,35 @@ document.getElementById('parseButton').addEventListener('click', () => {
     result.year = parseInt(findLineValue('Год производства'));
     result.nominatedYear = parseInt(nominatedYear); // Используем введенный год
 
+    // Обработка номинаций
+    const nominations = [];
+    const nominationOptions = [
+        { id: 'isWinBestFilm', name: 'Лучший фильм' },
+        { id: 'isWinOriginalScript', name: 'Лучший сценарий' },
+        { id: 'isWinAdaptedScreenplay', name: 'Лучший адаптированный сценарий' },
+        { id: 'isWinShortAnimatedFilm', name: 'Лучший короткометражный анимационный фильм' },
+        { id: 'isWinShortFeatureFilm', name: 'Лучший короткометражный игровой фильм' },
+        { id: 'isWinShortDocumentaryFilm', name: 'Лучший короткометражный документальный фильм' },
+        { id: 'isWinBestDocumentary', name: 'Лучший документальный фильм' },
+        { id: 'isWinForeignLanguageFilm', name: 'Лучший фильм на иностранном языке' },
+        { id: 'isWinBestAnimatedFilm', name: 'Лучший анимационный фильм' },
+    ];
+
+    nominationOptions.forEach(option => {
+        const checkbox = document.getElementById(option.id);
+        if (checkbox.checked) {
+            const nomination = {
+                name: option.name,
+                [option.id]: false, // Флаг по умолчанию
+            };
+            nominations.push(nomination);
+        }
+    });
+
+    if (nominations.length > 0) {
+        result.nomination = nominations;
+    }
+
     // Остальная обработка (как в вашем коде)
     const countries = findLineValue('Страна').split(',').map(country => ({ country: country.trim() }));
     result.countries = countries;
