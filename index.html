@@ -9,7 +9,14 @@
 </head>
 <body>
     <h1>Парсер данных о фильме</h1>
-    <input id="inputId" type="text" placeholder="Введите ссылку или ID фильма">
+    <div class="topInput">
+        <div>
+            <input type="text" id="inputId" placeholder="Введите ID или ссылку">
+        </div>
+        <div>
+            <input type="number" id="nominatedYear" placeholder="Введите год номинации" min="1900" max="2100">
+        </div>
+    </div>
     <textarea id="inputText" placeholder="Вставьте текст о фильме здесь... (копируем от названия фильма, до описания)"></textarea>
     <div>
         <label><input type="checkbox" id="isWinBestFilm"> Лучший фильм</label>

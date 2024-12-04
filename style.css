@@ -69,5 +69,14 @@ div {
     display: flex;
     flex-wrap: wrap;
     gap: 10px; /* Расстояние между элементами */
-    margin-bottom: 20px;
+    width: 100%;
 }
+
+.topInput{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+/* .topInput div{
+    width: 50%;
+} */
