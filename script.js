@@ -118,7 +118,7 @@ document.getElementById('parseButton').addEventListener('click', () => {
     // Форматирование результата
     const formattedResult = JSON.stringify(result, null, 4); // Используем стандартный JSON.stringify
 
-    document.getElementById('output').textContent = formattedResult;
+    document.getElementById('output').textContent = formattedResult + ',';
     document.getElementById('copyButton').style.display = 'inline-block';
 
     // Обработчик для кнопки "Скопировать"
