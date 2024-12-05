@@ -97,14 +97,14 @@ document.getElementById('parseButton').addEventListener('click', () => {
 
     result.worldPremiere = findLineValue('Премьера в мире').split(',')[0];
 
-    // Рейтинг MPAA и возрастные ограничения
+    // Возрастные ограничения и рейтинг MPAA
+    result.ageLimitLine = findLineValue('Возраст');
     const ratingMpaaLine = findLineValue('Рейтинг MPAA'); // ищем строку с рейтингом
     if (ratingMpaaLine) {
         result.ratingMpaa = ratingMpaaLine.toLowerCase(); // сохраняем рейтинг в формате строки (например, 'r')
     } else {
         result.ratingMpaa = '';
     }
-    result.ageLimitLine = findLineValue('Возраст');
     result.filmLength = findLineValue('Время');
     result.description = lines.slice(lines.findIndex(line => line.startsWith('Гуляя'))).join(' ').trim();
     result.video = `https://www.kinopoisk.ru/film/${inputId}/`;
