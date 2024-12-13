@@ -35,9 +35,10 @@ document.getElementById('parseButton').addEventListener('click', () => {
     // Данные из ID
     result.kinopoiskId = parseInt(inputId);
     const nameRuLine = lines[0].trim();
-    result.nameRu = nameRuLine.replace(/\s*\(\d{4}\)$/, ""); // Убираем год в скобках
+    // result.nameRu = nameRuLine.replace(/\s*\(\d{4}\)$/, ""); // Убираем год в скобках
+    result.nameRu = nameRuLine.replace(/\s*\(.*?\)$/, "").replace(/\s*\(.*?\)/g, "");
     const nameOriginalLine = lines[1].trim();
-    result.nameOriginal = nameOriginalLine.replace(/\s*(16\+|18\+)$/, "");
+    result.nameOriginal = nameOriginalLine.replace(/\s*(18\+|17\+|16\+|15\+|14\+|13\+|12\+|11\+|10\+|9\+|8\+|7\+|6\+|5\+|4\+|3\+|2\+|1\+|0\+)$/, "");
     result.posterUrl = `https://kinopoiskapiunofficial.tech/images/posters/kp/${inputId}.jpg`;
     result.posterUrlPreview = `https://kinopoiskapiunofficial.tech/images/posters/kp_small/${inputId}.jpg`;
     result.year = parseInt(findLineValue('Год производства'));
@@ -105,8 +106,13 @@ document.getElementById('parseButton').addEventListener('click', () => {
     } else {
         result.ratingMpaa = '';
     }
+
     result.filmLength = findLineValue('Время');
     result.description = lines.slice(lines.findIndex(line => line.startsWith('Гуляя'))).join(' ').trim();
+    if (result.description === 'Рейтинг фильма') {
+        result.description = '';
+    }
+
     result.video = `https://www.kinopoisk.ru/film/${inputId}/`;
     result.webUrl = `https://www.kinopoisk.ru/film/${inputId}/`;
 
